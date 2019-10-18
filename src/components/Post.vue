@@ -1,14 +1,30 @@
 <template>
   <div>
     <h4>
-      <input :disabled="post.disabled" @blur="updatePost" v-model="post.title" />
-      <span v-if="post.id">
-        -
-        <i @click="post.disabled = !post.disabled" class="far fa-edit"></i> -
-        <i @click="deletePost" class="fas fa-trash-alt"></i>
-      </span>
+      <div class="edit">
+        <div>
+          <i @click="post.disabled = !post.disabled" class="far fa-edit fa-1x"></i> -
+          <i @click="deletePost" class="fas fa-trash-alt"></i>
+        </div>
+      </div>
+      <input
+        :disabled="post.disabled"
+        @blur="updatePost"
+        v-model="post.title"
+        placeholder="Title"
+        class="form-control"
+      />
+      <span v-if="post.id"></span>
     </h4>
-    <textarea rows="8" cols="30" @blur="updatePost" :disabled="post.disabled" v-model="post.body" />
+    <textarea
+      class="form-control"
+      placeholder="Body"
+      rows="8"
+      cols="30"
+      @blur="updatePost"
+      :disabled="post.disabled"
+      v-model="post.body"
+    />
   </div>
 </template>
 
@@ -33,4 +49,10 @@ export default {
 </script>
 
 <style>
+  .edit{
+    display: flex;
+    justify-content: flex-end;
+  }
+
+
 </style>

@@ -5,15 +5,15 @@
         <div class="col-sm-4">
           <button class="btn btn-primary" @click="resetNewPost">New Post</button>
         </div>
-        <div v-if="showNewPost" class="col-sm-8">
+        <div v-if="showNewPost" class="col-sm-8" id="form-input">
           New Post
           <post :post="newPost" />
-          <button class="btn btn-success" @click="addNewPost">Submit</button>
-          <button class="btn btn-danger" @click="resetNewPost">Cancel</button>
+          <button class="btn btn-success mt-4 mr-2" @click="addNewPost">Submit</button>
+          <button class="btn btn-danger mt-4" @click="resetNewPost">Cancel</button>
         </div>
       </div>
       
-      <div class="row col-sm-12">
+      <div class="row col-sm-12 mt-4">
         <div class="col-sm-4 mb-3" v-bind:key="post.id" v-for="post in posts">
           <post :post="post" @deletePost="deletePost" />
         </div>
@@ -70,8 +70,20 @@ export default {
   font-family: "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+#form-input{
+  max-width: 575px;
+}
+
+@media screen and (max-width: 575px){
+  #app{
+    text-align: center;
+  }
+  #form-input{
+    text-align: center;
+    margin-top: 30px;
+  }
 }
 </style>
